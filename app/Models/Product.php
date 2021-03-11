@@ -9,14 +9,15 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $table = 'products';
-
     protected $fillable = [
         'name',
-        'brand',
         'description',
-        'user_id'
+        'unit_price',
+        'quantity',
+        'total_cost'
     ];
+
+    protected $table = 'products';
 
     public function setTotalCostAttribute($value)
     {

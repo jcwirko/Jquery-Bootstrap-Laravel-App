@@ -20,7 +20,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::with('roles')->orderBy('first_name')->get();
+        $users = User::with('roles')->orderBy('name')->get();
         $roles = Bouncer::role()->all();
 
         return view('users.index', compact('users', 'roles'));

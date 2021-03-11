@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');*/
 
-Route::get('/', function() {
+Route::get('/home', function() {
     return view('layouts.admin');
 });
 

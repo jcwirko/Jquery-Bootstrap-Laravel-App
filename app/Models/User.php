@@ -15,6 +15,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'birthdate',
         'password',
     ];
 
@@ -26,4 +27,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getBirthdateAttribute($value)
+    {
+        return date('d-m-Y', strtotime($value));
+    }
 }
