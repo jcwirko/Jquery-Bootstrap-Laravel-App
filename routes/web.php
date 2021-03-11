@@ -9,18 +9,19 @@ use Illuminate\Support\Facades\Route;
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');*/
 
-
 Route::get('/', function() {
     return view('layouts.admin');
 });
 
-Route::get('panel-administrativo', [HomeController::class, 'index'])->name('dashboard');
+Route::middleware(['auth'])->group(function() {
+    Route::get('panel-administrativo', [HomeController::class, 'index'])->name('dashboard');
 
-//USER
-Route::resource('users', UserController::class);
+    //USER
+    Route::resource('users', UserController::class);
 
-//PRODUCTS
-Route::get('products/{user_id}', [ProductController::class, 'getProductsByUser']);
-Route::resource('products', ProductController::class);
+    //PRODUCTS
+    Route::get('products/{user_id}', [ProductController::class, 'getProductsByUser']);
+    Route::resource('products', ProductController::class);
+});
 
 require __DIR__.'/auth.php';
