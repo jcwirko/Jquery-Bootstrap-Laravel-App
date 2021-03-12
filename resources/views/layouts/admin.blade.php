@@ -19,7 +19,7 @@
 
     @stack('styles')
 
-    <link rel="stylesheet" href="{{asset('app/app.css')}}">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
 </head>
 
 <body id="page-top">
@@ -57,11 +57,11 @@
                         <i class="fas fa-fw fa-users"></i>
                         Usuarios
                     </a>
-                    <a class="collapse-item" href="cards.html">
+                    <a class="collapse-item" href="{{route('roles.index')}}">
                         <i class="far fa-fw fa-id-card "></i>
                         Roles
                     </a>
-                    <a class="collapse-item" href="cards.html">
+                    <a class="collapse-item" href="{{route('roles.grid')}}">
                         <i class="far fa-fw fa-hand-paper"></i>
                         Permisos
                     </a>
@@ -120,10 +120,16 @@
                                 Perfil
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                            <a class="dropdown-item" href="{{route('users.index')}}"
+                               onclick="event.preventDefault();  document.getElementById('logout-form').submit();"
+                            >
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Salir
                             </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+
                         </div>
                     </li>
 
@@ -200,7 +206,7 @@
 <script src="{{asset('libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('libs/sweetalert2/sweetalert2.min.js')}}"></script>
 <script src="{{asset('libs/sbadmin/js/sb-admin-2.min.js')}}"></script>
-<script src="{{asset('app/app.js')}}"></script>
+<script src="{{asset('js/app.js')}}"></script>
 
 @stack('scripts')
 

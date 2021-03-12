@@ -43,14 +43,12 @@
                             @endforeach
                         </td>
                         <td>
-                            @can('update-roles')
-                                @if(auth()->user()->id != $user->id)
-                                    <a href="" class="edit-el-form" data-toggle="modal" data-target="#editRoleUserMdl"
-                                       onclick="editRoleUserModal({{$user}})" title="Actualizar Roles">
-                                        <i class="fas fa-cogs"></i>
-                                    </a>
-                                @endif
-                            @endcan
+                            @if(auth()->user()->id != $user->id)
+                                <a href="" class="edit-el-form" data-toggle="modal" data-target="#editRoleUserMdl"
+                                   onclick="editRoleUserModal({{$user}})" title="Actualizar Roles">
+                                    <i class="fas fa-cogs"></i>
+                                </a>
+                            @endif
                             <a href="" class="delete-el-form" data-toggle="modal" data-target="#deleteMdl"
                                onclick="deleteUser({{$user}})" title="Eliminar Usuario">
                                 <i class="far fa-trash-alt"></i>

@@ -13,4 +13,9 @@ abstract class AbilitiesValues
         'name' => 'update-roles',
         'title' => 'Actualización de roles'
     ];
+
+    const PRODUCTS_MODULE = [
+        'name' => 'products',
+        'title' => 'Acceso a los productos'
+    ];
 }

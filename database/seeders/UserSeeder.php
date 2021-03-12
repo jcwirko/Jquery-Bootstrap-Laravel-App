@@ -20,8 +20,6 @@ class UserSeeder extends Seeder
             'password' => Hash::make('secret')
         ]);
 
-        Bouncer::allow(RolesValues::ADMIN['name'])->to(AbilitiesValues::ADMINISTRATION_MODULE['name']);
-        Bouncer::allow(RolesValues::ADMIN['name'])->to(AbilitiesValues::UPDATE_ROLES['name']);
-        Bouncer::assign(RolesValues::ADMIN['name'])->to($admin);
+        $admin->assign(RolesValues::ADMIN['name']);
     }
 }
