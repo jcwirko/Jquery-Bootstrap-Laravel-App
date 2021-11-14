@@ -68,19 +68,20 @@
 
         $(document).ready(function () {
             $("input[name='unit_price'], input[name='quantity']").on('keyup', function () {
-                calcularPrecio();
+                calcularPrecio(this);
             });
         });
 
-        function calcularPrecio() {
-            let unitPrice = $("input[name='unit_price']");
-            let quantity = $("input[name='quantity']");
+        function calcularPrecio(input) {
+            const formId = input.closest('form').id;
+            const unitPrice = $(`#${formId} input[name='unit_price']`);
+            const quantity = $(`#${formId} input[name='quantity']`);
+            const totalCost = $(`#${formId} input[name='total_cost']`);
 
-            if (unitPrice.val() && quantity.val()) {
-                $("input[name='total_cost']").val(unitPrice.val() * quantity.val())
+            if(unitPrice.val() && quantity.val()){
+                totalCost.val(unitPrice.val() * quantity.val());
             }
         }
-
 
         function editProduct(product) {
             $("#editProductFrm").attr('action', `/products/${product.id}`);
@@ -96,24 +97,18 @@
             $("#deleteProductFrm").attr('action', `/products/${product.id}`);
             $('#deleteProductFrm #productName').text(product.name);
         }
-
     </script>
 
     @if(!$errors->isEmpty())
         @if($errors->has('post'))
             <script>
                 $(function () {
-                    $('#createMdl').removeClass('zoomIn');
-                    $('#createMdl').addClass('shake');
                     $('#createMdl').modal('show');
                 });
             </script>
         @else
             <script>
                 $(function () {
-                    $('#createProductFrm').trigger('reset');
-                    $('#editMdl').removeClass('zoomIn');
-                    $('#editMdl').addClass('shake');
                     $('#editMdl').modal('show');
                 });
             </script>

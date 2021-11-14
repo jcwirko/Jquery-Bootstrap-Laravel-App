@@ -20,10 +20,11 @@ class ProductRequest extends FormRequest
         }
 
         return [
-            'code' => ['required', 'string', "unique:products,code,$id"],
-            'description' => ['required', 'string'],
-            'family' => ['nullable', 'string'],
-            'group' => ['nullable', 'string'],
+            'name' => ['required', 'string', "unique:products,name,$id", 'max:255'],
+            'unit_price' => ['required', 'numeric'],
+            'quantity' => ['required', 'integer'],
+            'total_cost' => ['required', 'numeric'],
+            'description' => ['nullable', 'string'],
         ];
     }
 
